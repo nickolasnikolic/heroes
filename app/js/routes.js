@@ -1,4 +1,4 @@
-var nonoApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filter'])
+var nonoApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filter', 'infinite-scroll'])
   .config(['$stateProvider',
     function($stateProvider) {
       $stateProvider

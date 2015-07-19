@@ -18,6 +18,18 @@ h1{
   font-size: 1.4321em;
 }
 
+.jobHeading{
+  width: 240px;
+  padding: 1em;
+  margin: 0.25em;
+  background-color: red;
+}
+
+.jobList{
+  padding: 1em;
+  background-color: grey;
+}
+
 p{
   letter-spacing: initial;
   text-align: justify;

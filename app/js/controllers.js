@@ -22,6 +22,14 @@ nonoApp.controller('HomeController', ['$scope', '$state', function($scope, $stat
 nonoApp.controller('SelectionController', ['$scope', function($scope) {
   document.title = 'heroes - selection'; //set the page title
 
+  //stack the job listings
+  $('.grid').masonry({
+    // options
+    itemSelector: '.jobHeading',
+    columnWidth: 200
+  });
+
+  $scope.dummyFunction = function(){ console.log('here!!'); };
   $scope.dummyData = [
     {
       'heading': "First one",
@@ -39,6 +47,15 @@ nonoApp.controller('SelectionController', ['$scope', function($scope) {
         {'title': 3},
         {'title': 4},
         {'title': 5},
+        {'title': 6},
+        {'title': 7},
+        {'title': 8},
+        {'title': 9},
+        {'title': 10},
+        {'title': 11},
+        {'title': 12},
+        {'title': 13},
+        {'title': 14}
       ]
     },{
       'heading': "Third one",

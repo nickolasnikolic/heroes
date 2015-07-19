@@ -1,20 +1,19 @@
 
-<div class="col-offset-2 col-lg-8 col-pull-2" id="selectionContainer">
+<div class="col-lg-12" id="selectionContainer">
   <div id="filters">
     <form class="form-horizontal">
       <div class="form-group">
-        <label>preference</label>
         <input type='text' name='filter' ng-model="filter"></input>
         <input type='submit'></input>
       </div>
     </form>
   </div>
-  <div class="col-lg-8">
-    <section ng-repeat="dummy in dummyData">
-      {{dummy.heading}}
-      <article ng-repeat="article in dummy.articles">
+  <div class="col-lg-12 grid" infinite-scroll="dummyFunction" infinite-scroll-distance="2">
+    <ul class="jobHeading" ng-repeat="dummy in dummyData">
+      <li class="jobType">{{dummy.heading}}</li>
+      <li class="jobList" ng-repeat="article in dummy.articles" >
         {{article.title}}
-      </article>
+      </li>
     </section>
   </div>
 </div>

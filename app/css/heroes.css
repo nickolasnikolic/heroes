@@ -2,11 +2,10 @@
 *{
   font-family: questa, serif;
   letter-spacing: 0.1234em;
-  background:transparent;
 }
 
 html{
-  background-color: white;
+  background-color: azure;
 }
 
 body{
@@ -22,7 +21,9 @@ h1{
   width: 240px;
   padding: 1em;
   margin: 0.25em;
-  background-color: red;
+  background-color: white;
+  border: grey 1px dotted;
+  border-radius: 7px;
 }
 
 .jobList{

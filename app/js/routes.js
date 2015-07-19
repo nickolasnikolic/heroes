@@ -2,17 +2,8 @@ var heroesApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filt
   .config(['$stateProvider',
     function($stateProvider) {
       $stateProvider
-//logged out
-        .state('home', {
-          url: '/',
-          templateUrl: 'templates/home.html',
-          controller: 'HomeController',
-          onEnter: function($state) {
-            console.log('home');
-          }
-        })
 
-
+      
       .state('contact', {
         url: '/contact',
         templateUrl: 'templates/contact.html',
@@ -24,7 +15,7 @@ var heroesApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filt
 
 
       .state('selection', {
-        url: '/selection',
+        url: '/',
         templateUrl: 'templates/selection.html',
         controller: 'SelectionController',
         onEnter: function($state) {

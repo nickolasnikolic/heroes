@@ -1,18 +1,15 @@
 
 <div class="col-lg-12" id="selectionContainer">
-  <div id="filters">
-    <form class="form-horizontal">
-      <div class="form-group">
-        <input type='text' name='filter' ng-model="filter"></input>
-        <input type='submit'></input>
-      </div>
-    </form>
-  </div>
   <div id="gridDisplay" class="col-lg-12">
-    <ul class="job" ng-repeat="jobDatum in jobsData">
-      <li class="jobType">{{jobDatum.heading}}</li>
-      <li class="jobList" ng-repeat="article in jobDatum.articles" >
-        {{article.title}}
+    <ul class="job" ng-repeat="job in jobsData track by $index">
+      <li class="jobType">
+        <div>
+          <strong>{{job.jobtitle}}</strong> - <small>{{job.company}}</small><br />
+          {{job.formattedLocation}}<br />
+        </div>
+        <div class="jobDescription">{{job.snippet | stripTags}}</div>
+        {{job.formattedRelativeTime}}<br />
+        <a href="{{job.url}}">go to job</a>
       </li>
     </section>
   </div>

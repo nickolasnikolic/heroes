@@ -3,7 +3,7 @@ var nonoApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filter
     function($stateProvider) {
       $stateProvider
 //logged out
-        .state('homenotlogged', {
+        .state('home', {
           url: '/',
           templateUrl: 'templates/home.html',
           controller: 'HomeController',
@@ -23,7 +23,7 @@ var nonoApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filter
       })
 
 
-      .state('selectionlogged', {
+      .state('selection', {
         url: '/selection',
         templateUrl: 'templates/selection.html',
         controller: 'SelectionController',

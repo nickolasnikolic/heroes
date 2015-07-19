@@ -10,12 +10,59 @@ nonoApp.controller('IndexController', ['$scope', '$state', function($scope, $sta
 
 }])
 
-nonoApp.controller('HomeController', ['$scope', function($scope) {
+nonoApp.controller('HomeController', ['$scope', '$state', function($scope, $state) {
   document.title = 'heroes - home'; //set the page title
+
+  $('#findJob').click(function(){
+    $state.go('selection');
+  });
+
 }])
 
 nonoApp.controller('SelectionController', ['$scope', function($scope) {
   document.title = 'heroes - selection'; //set the page title
+
+  $scope.dummyData = [
+    {
+      'heading': "First one",
+      'articles': [
+        {'title': 1},
+        {'title': 2},
+        {'title': 3},
+        {'title': 4}
+      ]
+    },{
+      'heading': "Second one",
+      'articles': [
+        {'title': 1},
+        {'title': 2},
+        {'title': 3},
+        {'title': 4},
+        {'title': 5},
+      ]
+    },{
+      'heading': "Third one",
+      'articles': [
+        {'title': 1},
+        {'title': 2}
+      ]
+    },{
+      'heading': "fourth one",
+      'articles': [
+        {'title': 1}
+      ]
+    },{
+      'heading': "fifth one",
+      'articles': [
+        {'title': 1}
+      ]
+    },{
+      'heading': "sixth one",
+      'articles': [
+        {'title': 1}
+      ]
+    }
+  ];
 }])
 
 nonoApp.controller('ContactController', ['$scope', function($scope) {

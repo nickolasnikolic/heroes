@@ -6,19 +6,13 @@
 }
 
 html{
-  background-color: floralwhite;
+  background-color: white;
 }
 
 body{
   background: transparent;
 }
 
-h1,h2,h3,h4,h5,h6,h1 a, .user-link{
-  font-family: minimobold, serif;
-  font-size: 1.2em;
-  letter-spacing: 0.1234em;
-  text-transform: lowercase;
-}
 
 h1{
   font-size: 1.4321em;
@@ -86,51 +80,16 @@ button:focus{
   padding: 1em;
 }
 
-.lover{
-  font-size: 0.9em;
-  padding: 2em 28em 2em 2em;
-  text-align: justify;
-  text-justify: inter-word;
-}
-
 nav{/*ul removed*/
   float: right;
 }
 
-#logo{ /*tentative*/
-  position: fixed;
-  top: 41px;
-  left: -46px;
-  transform: rotate(90deg);
-}
-
-#calendar{
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-#rating{
-  margin-top: 1.75em;
-}
-
-#ratingRadios input, #getRidOfTheMeanies input{
-  position: relative;
-  top: 3px;
-}
-
-#subscribePusher{
-  height: 350px;
-}
+#logo{}
 
 @media all and (min-width: 992px){
-  #filters{
-    position: fixed;
-  }
+  #filters{}
 }
 @media all and (max-width: 991px){
-  .lover{
-    padding: 2em;
-  }
   #filters{
     padding: 3.21em;
   }

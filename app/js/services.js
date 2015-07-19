@@ -1,0 +1,2 @@
+nonoApp
+  .factory( 'LoverService', function(){});

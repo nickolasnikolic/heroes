@@ -18,7 +18,7 @@ h1{
   font-size: 1.4321em;
 }
 
-.jobHeading{
+.job{
   width: 240px;
   padding: 1em;
   margin: 0.25em;
@@ -61,6 +61,7 @@ a:hover{
 
 ul{
   list-style: none;
+  width: auto;
 }
 
 input[type="text"], textarea{

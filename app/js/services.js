@@ -1,2 +1,1 @@
-nonoApp
-  .factory( 'LoverService', function(){});
+

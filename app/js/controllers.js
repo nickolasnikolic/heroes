@@ -1,14 +1,5 @@
 heroesApp.controller('IndexController', ['$scope', '$state', function($scope, $state) {
 
-  $(document).scroll(function(){
-    //stack the job listings
-    $('#gridDisplay').packery({
-      // options
-      itemSelector: '.job',
-      gutter: 1
-    });
-  });
-
   $('#searchButton').click(function(){
 
     var job = $('#jobName').val();
@@ -50,31 +41,27 @@ heroesApp.controller('HomeController', ['$scope', '$state', function($scope, $st
 
 heroesApp.controller('SelectionController', ['$scope', '$state', function($scope, $state) {
   document.title = 'heroes - selection'; //set the page title
+
+
+
+
   $scope.page = 1;
   $scope.addMoreJobs = function(){
 
     var job = $('#jobName').val();
     var location = $('#locationName').val();
-
     $.getJSON('../api/selection/' + job + '/' + location + '/' + $scope.page++)
       .success(function(data) {
 
         console.log(data.results);
-        $scope.jobsData.push(data.results);
+        $scope.jobsData = _.union($scope.jobsData, data.results);
         $scope.$apply();
 
-        //stack the job listings
-        $('#gridDisplay').packery({
-          // options
-          itemSelector: '.job',
-          gutter: 1
-        });
       })
       .error(function(error){
         console.log('error:');
         console.log(error);
       });
-
   };
 }])
 

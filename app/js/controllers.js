@@ -50,7 +50,6 @@ heroesApp.controller('HomeController', ['$scope', '$state', function($scope, $st
 
 heroesApp.controller('SelectionController', ['$scope', '$state', function($scope, $state) {
   document.title = 'heroes - selection'; //set the page title
-  angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 250);
   $scope.page = 1;
   $scope.addMoreJobs = function(){
 

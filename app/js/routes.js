@@ -1,9 +1,9 @@
-var heroesApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filter', 'infinite-scroll'])
+var heroesApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filter'])
   .config(['$stateProvider',
     function($stateProvider) {
       $stateProvider
 
-      
+
       .state('contact', {
         url: '/contact',
         templateUrl: 'templates/contact.html',

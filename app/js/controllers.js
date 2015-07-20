@@ -13,12 +13,12 @@ heroesApp.controller('IndexController', ['$scope', '$state', function($scope, $s
         console.log(data.results);
         $scope.jobsData = data.results;
         $scope.$apply();
-        //stack the job listings
+        /*
         $('#gridDisplay').packery({
-          // options
           itemSelector: '.job',
-          gutter: 1
+          gutter: 10
         });
+        */
       })
       .error(function(error){
         console.log('error:');
@@ -56,7 +56,7 @@ heroesApp.controller('SelectionController', ['$scope', '$state', function($scope
         console.log(data.results);
         $scope.jobsData = _.union($scope.jobsData, data.results);
         $scope.$apply();
-
+        //setTimeout(function(){$('#gridDisplay').packery();},250);//HACK
       })
       .error(function(error){
         console.log('error:');

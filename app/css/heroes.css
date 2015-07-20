@@ -35,30 +35,31 @@ header div{
   background-color: rgba(0,0,0,0.45);
   color: white;
   padding: 0 5px;
-  margin: 0 0;
+  margin: 0;
 }
 
 #pusher{
   height: 100%;
 }
 
+#addMore{
+  background-color: orange;
+  clear: both;
+}
+
 h1{
   font-size: 1.4321em;
 }
 
-footer{
-  position: fixed;
-  top: 98%;
-  left: -120px;
-}
+footer{}
 
 .job{
-  width: 240px;
-  padding: 1em;
-  margin: 0.25em;
-  background-color: rgba(255,255,255,0.95);
-  border: grey 1px dotted;
-  border-radius: 7px;
+  padding: 0.8em;
+  margin: 1em 0.1em;
+  background-color: rgba(255,255,255,0.85);
+  overflow-y: visible;
+  border-radius: 3px;
+  float: left;
 }
 
 .jobList{
@@ -95,12 +96,11 @@ a:hover{
 
 ul{
   list-style: none;
-  width: auto;
 }
 
 input[type="text"], textarea{
-  max-width: 40em !important;
-  border-radius: 0 !important;
+  max-width: 40em;
+  border-radius: 5px;
   padding: 0.5em;
 }
 
@@ -109,10 +109,11 @@ input[type="radio"], input[type="checkbox"]{
 }
 
 button, input[type="button"], input[type="submit"]{
-  max-width: 40em !important;
+  width: 7em;
   padding: 0.73em;
   position: relative;
-  top: -2px;
+  top: -1px;
+  border-radius: 5px;
 }
 
 input[type="text"]:focus, textarea:focus, button:focus{

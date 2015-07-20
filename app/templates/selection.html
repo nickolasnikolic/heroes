@@ -1,8 +1,8 @@
 
-<div class="col-lg-12" id="selectionContainer">
+<div  id="selectionContainer">
   <div id="gridDisplay" class="col-lg-12" ng-if="jobsData.length">
-    <ul>
-      <li class="job" ng-repeat="job in jobsData track by $index">
+    <ul class="container">
+      <li class="job col-lg-3 col-sm-12" ng-repeat="job in jobsData track by $index" packery>
         <div>
           <strong>{{job.jobtitle}}</strong><br />
           <small>{{job.company}}</small><br />
@@ -10,10 +10,17 @@
         </div>
         <div class="jobDescription">{{job.snippet | stripTags}}</div>
         {{job.formattedRelativeTime}}<br />
-        <a href="{{job.url}}">go to job</a>
+        <div><a href="{{job.url}}">go to job</a></div>
       </li>
-      <li id="addMore" class="job" ng-click="addMoreJobs()"><p><a>more...</a></p></li>
+      <li id="addMore" class="job hvr-pop" ng-click="addMoreJobs()"><p><a>more...</a></p></li>
     </ul>
+    <div>
+      <span id=indeed_at>
+        <a href="http://www.indeed.com/">jobs</a> by
+        <a href="http://www.indeed.com/" title="Job Search">
+          <img src="http://www.indeed.com/p/jobsearch.gif" style="border: 0; vertical-align: middle;" alt="Indeed job search">
+        </a>
+      </span>
+    </div>
   </div>
-  <div id="pusher">&nbsp;</div>
 </div>

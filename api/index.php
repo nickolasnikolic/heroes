@@ -6,25 +6,6 @@ error_reporting(-1);//tell me stuff
 
 $app = new \Slim\Slim();
 
-$app->get('/install', function(){
-  $sql = file_get_contents('jobs.sql');
-
-  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-  $server = $url["host"];
-  $user = $url["user"];
-  $pass = $url["pass"];
-  $database = substr($url["path"], 1);
-
-  $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
-
-  //$db = new PDO("mysql:host=localhost;dbname=gresume;charset=utf8", 'root', '');
-  $db->query( $sql );
-
-  echo 'got here';
-
-});
-
 $app->get('/home', function(){
 
   $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
@@ -126,7 +107,7 @@ $app->get('/selection/:job/:location', function($job,$location){
 
 $app->get('/selection/:job/:location/:page', function($job,$location,$page){
   $client = new Indeed("4779755742469402");
-  
+
   $params = array(
       "q" => $job,
       "l" => $location,

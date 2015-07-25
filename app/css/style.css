@@ -31,9 +31,25 @@ header div{
 }
 
 #logo{
+<<<<<<< HEAD:app/css/style.css
   position: relative;
   left: 0.8em;
   top: -0.35em;
+=======
+  background-color: rgba(0,0,0,0.45);
+  color: white;
+  padding: 0 5px;
+  margin: 0;
+}
+
+#pusher{
+  height: 100%;
+}
+
+#addMore{
+  background-color: orange;
+  clear: both;
+>>>>>>> origin/master:app/css/heroes.css
 }
 
 #banner{
@@ -43,6 +59,7 @@ header div{
   margin: 0;
 }
 
+<<<<<<< HEAD:app/css/style.css
 #popover{
   background-color: rgba( 50, 50, 50, 0.5 );
   position: fixed;
@@ -53,6 +70,9 @@ header div{
   border-radius: 5px;
   padding: 1em;
 }
+=======
+footer{}
+>>>>>>> origin/master:app/css/heroes.css
 
 #addMore{
   background-color: orange;
@@ -123,6 +143,7 @@ a:hover{
 ul{}
 li{
   list-style: none;
+<<<<<<< HEAD:app/css/style.css
 }
 
 input{
@@ -134,6 +155,13 @@ input{
 input[type="text"], textarea{
   border-radius: 5px;
   width: 20em;
+=======
+}
+
+input[type="text"], textarea{
+  max-width: 40em;
+  border-radius: 5px;
+>>>>>>> origin/master:app/css/heroes.css
   padding: 0.5em;
 }
 
@@ -143,7 +171,13 @@ input[type="radio"], input[type="checkbox"]{
 
 button, input[type="button"], input[type="submit"]{
   width: 7em;
+<<<<<<< HEAD:app/css/style.css
   padding: 0.7em;
+=======
+  padding: 0.73em;
+  position: relative;
+  top: -1px;
+>>>>>>> origin/master:app/css/heroes.css
   border-radius: 5px;
 }
 

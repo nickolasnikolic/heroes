@@ -126,7 +126,7 @@ $app->get('/selection/:job/:location', function($job,$location){
 
 $app->get('/selection/:job/:location/:page', function($job,$location,$page){
   $client = new Indeed("4779755742469402");
-
+  
   $params = array(
       "q" => $job,
       "l" => $location,

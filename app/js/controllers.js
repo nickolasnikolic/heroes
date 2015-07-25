@@ -1,3 +1,4 @@
+
 gresumeApp.controller('IndexController', ['$scope', '$state', function($scope, $state) {}])
 
 gresumeApp.controller('HomeController', ['$scope', '$state', function($scope, $state) {
@@ -78,21 +79,4 @@ gresumeApp.controller('HomeController', ['$scope', '$state', function($scope, $s
     $('#jobWages').val('');
 
   });
-
-  $scope.addMoreJobs = function() {
-
-    var job = $('#jobName').val();
-    var location = $('#locationName').val();
-    $.getJSON('../api/home/' + job + '/' + location + '/' + $scope.page++)
-      .success(function(data) {
-
-        console.log(data.results);
-        $scope.jobsData = _.union($scope.jobsData, data.results);
-        $scope.$apply();
-      })
-      .error(function(error) {
-        console.log('error:');
-        console.log(error);
-      });
-  };
 }])

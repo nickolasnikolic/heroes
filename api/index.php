@@ -6,17 +6,99 @@ error_reporting(-1);//tell me stuff
 
 $app = new \Slim\Slim();
 
-$app->get('/home', function(){}); //so far nothing for home
+$app->get('/install', function(){
+  $sql = file_get_contents('jobs.sql');
+
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $user = $url["user"];
+  $pass = $url["pass"];
+  $database = substr($url["path"], 1);
+
+  $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
+
+  //$db = new PDO("mysql:host=localhost;dbname=gresume;charset=utf8", 'root', '');
+  $db->query( $sql );
+
+  echo 'got here';
+
+});
+
+$app->get('/home', function(){
+
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $user = $url["user"];
+  $pass = $url["pass"];
+  $database = substr($url["path"], 1);
+
+  $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
+
+  //$db = new PDO("mysql:host=localhost;dbname=gresume;charset=utf8", 'root', '');
+  $stmtUserId = $db->prepare('SELECT * FROM stories ORDER BY stories.id DESC LIMIT 200;');
+  $stmtUserId->execute();
+  $resultUserId = $stmtUserId->fetchAll(PDO::FETCH_ASSOC);
+
+  echo json_encode($resultUserId);
+});
+
+$app->post('/home', function(){
+
+  $branch = $_POST['branch'];
+  $years = $_POST['years'];
+  $moc = $_POST['moc'];
+  $stationed = $_POST['stationed'];
+
+  $branch = htmlentities($branch);
+  $years = htmlentities($years);
+  $moc = htmlentities($moc);
+  $stationed = htmlentities($stationed);
+
+  $title = $_POST['title'];
+  $location = $_POST['location'];
+  $description = $_POST['description'];
+  $wages = $_POST['wages'];
+
+  $title = htmlentities($title);
+  $location = htmlentities($location);
+  $description = htmlentities($description);
+  $wages = htmlentities($wages);
+
+
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $user = $url["user"];
+  $pass = $url["pass"];
+  $database = substr($url["path"], 1);
+
+  $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
+
+  //$db = new PDO("mysql:host=localhost;dbname=gresume;charset=utf8", 'root', '');
+  $stmtUserId = $db->prepare('INSERT INTO stories (branch,years,moc,stationed,title,location,description,wages) VALUES (:branch,:years,:moc,:stationed,:title,:location,:description,:wages);');
+
+  $stmtUserId->bindParam( ':branch', $branch );
+  $stmtUserId->bindParam( ':years', $years );
+  $stmtUserId->bindParam( ':moc', $moc );
+  $stmtUserId->bindParam( ':stationed', $stationed );
+
+  $stmtUserId->bindParam( ':title', $title );
+  $stmtUserId->bindParam( ':location', $location );
+  $stmtUserId->bindParam( ':description', $description );
+  $stmtUserId->bindParam( ':wages', $wages );
+  $stmtUserId->execute();
+});
 
 $app->get('/selection/:job', function($job){
   $client = new Indeed("4779755742469402");
 
   $params = array(
       "q" => $job,
-      "l" => $location,
       "userip" => $_SERVER['REMOTE_ADDR'],
       "useragent" => $_SERVER['HTTP_USER_AGENT'],
-      "limit" => "25"
+      "limit" => "10"
   );
 
   $results = $client->search($params);
@@ -33,7 +115,7 @@ $app->get('/selection/:job/:location', function($job,$location){
       "l" => $location,
       "userip" => $_SERVER['REMOTE_ADDR'],
       "useragent" => $_SERVER['HTTP_USER_AGENT'],
-      "limit" => "25"
+      "limit" => "10"
   );
 
   $results = $client->search($params);
@@ -51,7 +133,7 @@ $app->get('/selection/:job/:location/:page', function($job,$location,$page){
       "start" => $page * 25,
       "userip" => $_SERVER['REMOTE_ADDR'],
       "useragent" => $_SERVER['HTTP_USER_AGENT'],
-      "limit" => "25"
+      "limit" => "10"
   );
 
   $results = $client->search($params);

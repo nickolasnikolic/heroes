@@ -1,95 +1,98 @@
-heroesApp.controller('IndexController', ['$scope', '$state', function($scope, $state) {
+gresumeApp.controller('IndexController', ['$scope', '$state', function($scope, $state) {}])
 
-  $(document).scroll(function(){
-    //stack the job listings
-    $('#gridDisplay').packery({
-      // options
-      itemSelector: '.job',
-      gutter: 1
+gresumeApp.controller('HomeController', ['$scope', '$state', function($scope, $state) {
+  document.title = 'jobs for heroes - home'; //set the page title
+
+  $scope.jobsData = [];
+
+  $.getJSON('../api/home')
+    .success(function(data) {
+
+      //console.log(data);
+      $scope.jobsData = data;
+      console.log($scope.jobsData);
+
+      $scope.$apply();
+
     });
-  });
 
-  $('#searchButton').click(function(){
+  $( '#popover' ).hide();
+  $scope.makeShift = function(jobtitle, joblocation){
+    $( '#popover' ).hide();
+    $( '#popover' ).fadeIn();
 
-    var job = $('#jobName').val();
-    var location = $('#locationName').val();
+    var job = jobtitle;
+    var location = joblocation;
 
-    console.log(job + ' ' + location);
-
-    $.getJSON('../api/selection/' + job + '/' + location)
+    $.getJSON('../api/selection/' + job + '/' + location )
       .success(function(data) {
 
         console.log(data.results);
-        $scope.jobsData = data.results;
+        $scope.leads = data.results;
         $scope.$apply();
-        //stack the job listings
-        $('#gridDisplay').packery({
-          // options
-          itemSelector: '.job',
-          gutter: 1
-        });
       })
-      .error(function(error){
-        console.log('error:');
-        console.log(error);
-      });
-
-
-  });
-
-}])
-
-heroesApp.controller('HomeController', ['$scope', '$state', function($scope, $state) {
-  document.title = 'heroes - home'; //set the page title
-
-  $('#findJob').click(function(){
-    $state.go('selection');
-  });
-
-}])
-
-heroesApp.controller('SelectionController', ['$scope', '$state', function($scope, $state) {
-  document.title = 'heroes - selection'; //set the page title
-  $scope.page = 1;
-  $scope.addMoreJobs = function(){
-
-    var job = $('#jobName').val();
-    var location = $('#locationName').val();
-
-    $.getJSON('../api/selection/' + job + '/' + location + '/' + $scope.page++)
-      .success(function(data) {
-
-        console.log(data.results);
-        $scope.jobsData.push(data.results);
-        $scope.$apply();
-
-        //stack the job listings
-        $('#gridDisplay').packery({
-          // options
-          itemSelector: '.job',
-          gutter: 1
-        });
-      })
-      .error(function(error){
+      .error(function(error) {
         console.log('error:');
         console.log(error);
       });
 
   };
-}])
 
-heroesApp.controller('ContactController', ['$scope', '$state', function($scope, $state) {
-  document.title = 'heroes - contact'; //set the page title
-  $('#submitContact').click(function(){
-    //push the message to the utility that sends email
-    $.post('../api/contact', $scope.message)
+  $('#jobButton').click(function() {
+
+    var branch = $('#jobBranch').val();
+    var years = $('#jobYears').val();
+    var moc = $('#jobMoc').val();
+    var stationed = $('#jobStationed').val();
+
+    var title = $('#jobTitle').val();
+    var location = $('#jobLocation').val();
+    var description = $('#jobDescription').val();
+    var wages = $('#jobWages').val();
+
+    $scope.jobsData.unshift({
+      'title': title,
+      'location': location,
+      'description': description,
+      'wages': wages
+    });
+
+    console.log($scope.jobs);
+    $.post( '../api/home', {
+
+      'branch': branch,
+      'years': years,
+      'moc': moc,
+      'stationed': stationed,
+
+      'title': title,
+      'location': location,
+      'description': description,
+      'wages': wages
+
+    } );
+
+    $('#jobTitle').val('');
+    $('#jobLocation').val('');
+    $('#jobDescription').val('');
+    $('#jobWages').val('');
+
+  });
+
+  $scope.addMoreJobs = function() {
+
+    var job = $('#jobName').val();
+    var location = $('#locationName').val();
+    $.getJSON('../api/home/' + job + '/' + location + '/' + $scope.page++)
       .success(function(data) {
-        //do something about it
-        console.log(data);
+
+        console.log(data.results);
+        $scope.jobsData = _.union($scope.jobsData, data.results);
+        $scope.$apply();
       })
       .error(function(error) {
-        //do something about it
+        console.log('error:');
         console.log(error);
       });
-  });
-}]);
+  };
+}])

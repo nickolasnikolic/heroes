@@ -8,13 +8,12 @@ html{}
 
 body{
   background: transparent;
-  background-image: url(../images/flag.jpg);
+  background-image: url(../images/basketball.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-blend-mode: luminosity;
+  background-blend-mode: lighten;
   background-attachment: fixed;
   background-position: left top;
-
 }
 
 header{
@@ -32,29 +31,48 @@ header div{
 }
 
 #logo{
-  background-color: rgba(0,0,0,0.45);
-  color: white;
-  padding: 0 5px;
-  margin: 0 0;
+  position: relative;
+  left: 0.8em;
+  top: -0.35em;
 }
 
-h1{
+#banner{
+  background-color: rgba(0,0,0,0.45);
+  color: #ccc;
+  padding: 0 15px;
+  margin: 0;
+}
+
+#popover{
+  background-color: rgba( 50, 50, 50, 0.5 );
+  position: fixed;
+  left: 60%;
+  top: 30%;
+  /*height: 68%;*/
+  width: 38.5%;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+#addMore{
+  background-color: orange;
+  clear: both;
+}
+
+h2, h3, h4{
+  color: #000;
   font-size: 1.4321em;
 }
 
-footer{
-  position: fixed;
-  top: 98%;
-  left: -120px;
-}
+footer{}
 
 .job{
-  width: 240px;
-  padding: 1em;
-  margin: 0.25em;
-  background-color: rgba(255,255,255,0.95);
-  border: grey 1px dotted;
-  border-radius: 7px;
+  padding: 0.8em;
+  margin: 1em 0.1em;
+  background-color: rgba(255,255,255,0.85);
+  overflow-y: visible;
+  border-radius: 3px;
+  float: left;
 }
 
 .jobList{
@@ -62,12 +80,25 @@ footer{
   background-color: grey;
 }
 
+.topBar{
+  margin-bottom: 2em;
+}
+
 p{
+  color: #000;
   letter-spacing: initial;
   text-align: justify;
   text-justify: inter-word;
   text-overflow: ellipsis;
   word-break: keep-all;
+}
+
+#jobListings > li > div > p{
+  width: 50%;
+}
+
+p button{
+  color: #333;
 }
 
 a{
@@ -89,14 +120,20 @@ a:hover{
   text-decoration: underline;
 }
 
-ul{
+ul{}
+li{
   list-style: none;
-  width: auto;
+}
+
+input{
+  background-color: rgba( 255,255,255,0.3 ) !important;
+  color: white;
+  font-size: 1.2em;
 }
 
 input[type="text"], textarea{
-  max-width: 40em !important;
-  border-radius: 0 !important;
+  border-radius: 5px;
+  width: 20em;
   padding: 0.5em;
 }
 
@@ -105,14 +142,14 @@ input[type="radio"], input[type="checkbox"]{
 }
 
 button, input[type="button"], input[type="submit"]{
-  max-width: 40em !important;
-  padding: 0.73em;
-  position: relative;
-  top: -2px;
+  width: 7em;
+  padding: 0.7em;
+  border-radius: 5px;
 }
 
 input[type="text"]:focus, textarea:focus, button:focus{
-  box-shadow: 0px 0px 3px black;
+  background-color: rgba( 255,255,255,0.5 );
+  text-shadow: black 0px 0px 5px;
 }
 
 button:focus{
@@ -124,7 +161,7 @@ button:focus{
 }
 
 .row{
-  padding: 1em;
+  margin-left: 0;
 }
 
 @media all and (min-width: 992px){

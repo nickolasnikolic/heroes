@@ -1,0 +1,63 @@
+
+<div  id="homeContainer">
+  <div class="col-lg-12 topBar">
+    <div>
+      <form>
+        <div>
+          <input type="text" id="jobBranch" placeholder="branch of military"></input>
+          <input type="text" id="jobYears" placeholder="years in service"></input>
+        </div>
+        <div>
+          <input type="text" id="jobMoc" placeholder="your MOC/MOS from service"></input>
+          <input type="text" id="jobStationed" placeholder="where you were stationed"></input>
+        </div>
+        <div>
+          <input type="text" id="jobTitle" placeholder="job title"></input>
+          <input type="text" id="jobLocation" placeholder="job location"></input>
+        </div>
+        <div>
+          <input type="text" id="jobDescription"  placeholder="job description (any length)"></input>
+          <input type="text" id="jobWages" placeholder="wages"></input>
+        </div>
+        <div>
+          <button id="jobButton">save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div>
+    <ul id="jobListings">
+      <li ng-repeat="job in jobsData track by $index">
+        <div>
+          <h3 class="leadGeneration" data-spy='scroll' data-target="popover">
+            <a ng-mouseover="makeShift(job.title, job.location)">
+              <span class="leadTitle">{{job.title}}</span>
+              -
+              <span class="leadLocation">{{job.location}}</span>
+            </a>
+          </h3>
+          <p><small>{{job.wages}}</small> - {{job.description}}</p>
+          <p>{{job.branch}} - {{job.stationed}}</p>
+          <p>{{job.years}} - {{job.moc}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div id="popover" data-0="height: 55%;" data-175="height: 80%;">
+
+  <ul>
+    <li ng-repeat="lead in leads track by $index">
+      <a href="{{lead.url}}">{{lead.jobtitle}} - {{lead.company}} - {{lead.formattedLocation}}</a>
+    </li>
+    <strong ng-if="leads.length == 0">No results found...</strong>
+    <li>
+      <span id=indeed_at><a href="http://www.indeed.com/">jobs</a> by <a
+href="http://www.indeed.com/" title="Job Search"><img
+src="http://www.indeed.com/p/jobsearch.gif" style="border: 0;
+vertical-align: middle;" alt="Indeed job search"></a></span>
+    </li>
+  </ul>
+
+</div>
